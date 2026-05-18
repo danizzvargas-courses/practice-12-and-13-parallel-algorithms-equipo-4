@@ -1,9 +1,4 @@
-SOLUTION.md
-__pycache__/
-*.pyc
-.pytest_cache/
-*.egg-info/
-dist/
-build/
-.venv/
-venv/
+pruebas
+test_runner
+*.o
+*.out

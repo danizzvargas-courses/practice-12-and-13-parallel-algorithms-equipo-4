@@ -1,1 +1,2 @@
-pytest
+# Dependencias del proyecto
+# Compilar con: gcc -fopenmp src/pruebas.c -o pruebas

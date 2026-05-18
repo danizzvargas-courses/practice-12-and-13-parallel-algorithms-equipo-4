@@ -4,36 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-EDA II – Parallel Algorithms exposition using Python. Implementations go in `src/pruebas.py` and tests in `test/test.py`.
+EDA II – Parallel Algorithms exposition using OpenMP in C. Implementations go in `src/pruebas.c` and tests in `test/test.c`.
 
-## Setup
-
-```bash
-pip install -r requeriments.txt
-```
-
-## Run
+## Build & Run
 
 ```bash
-python src/pruebas.py
+# Compilar e implementación
+gcc -fopenmp src/pruebas.c -o pruebas
+./pruebas
+
+# Compilar y correr tests
+gcc -fopenmp test/test.c -o test_runner && ./test_runner
 ```
 
 ## Testing
 
-Uses `pytest`. Run all tests:
+Tests usan `assert.h` directamente. Cada función de test llama `assert()` e imprime un resultado. `main()` en `test/test.c` llama todas las funciones de test.
 
-```bash
-pytest test/ -v
-```
+## OpenMP
 
-Run a single test:
-
-```bash
-pytest test/test.py::test_ejemplo -v
-```
-
-## Structure
-
-- `src/pruebas.py` — main implementation file
-- `test/test.py` — imports from `src.pruebas` and contains pytest functions
-- `src/__init__.py` — makes `src` importable as a package
+- Siempre compilar con `-fopenmp`
+- Regiones paralelas con `#pragma omp parallel`
+- Controlar número de hilos: `OMP_NUM_THREADS=4 ./pruebas`
