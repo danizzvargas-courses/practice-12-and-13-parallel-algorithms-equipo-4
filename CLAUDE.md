@@ -4,28 +4,36 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-EDA II – Parallel Algorithms exposition using OpenMP in C. Implementations go in `src/pruebas.c` and tests in `test/test.c`.
+EDA II – Parallel Algorithms exposition using Python. Implementations go in `src/pruebas.py` and tests in `test/test.py`.
 
-## Build & Run
+## Setup
 
 ```bash
-# Compile with OpenMP
-gcc -fopenmp src/pruebas.c -o pruebas
+pip install -r requeriments.txt
+```
 
-# Run
-./pruebas
+## Run
 
-# Compile and run tests
-gcc -fopenmp test/test.c -o test_runner && ./test_runner
+```bash
+python src/pruebas.py
 ```
 
 ## Testing
 
-Tests use `assert.h` directly — no external framework. Each test function calls `assert()` and prints a result line. `main()` in `test/test.c` calls all test functions.
+Uses `pytest`. Run all tests:
 
-## OpenMP Notes
+```bash
+pytest test/ -v
+```
 
-- Always compile with `-fopenmp`
-- Use `omp_get_thread_num()` and `omp_get_num_threads()` for thread identification
-- Parallel regions are declared with `#pragma omp parallel`
-- Control thread count at runtime: `OMP_NUM_THREADS=4 ./pruebas`
+Run a single test:
+
+```bash
+pytest test/test.py::test_ejemplo -v
+```
+
+## Structure
+
+- `src/pruebas.py` — main implementation file
+- `test/test.py` — imports from `src.pruebas` and contains pytest functions
+- `src/__init__.py` — makes `src` importable as a package
