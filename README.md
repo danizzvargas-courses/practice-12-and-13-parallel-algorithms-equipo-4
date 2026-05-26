@@ -131,10 +131,60 @@ copyin(contador)
 ---
 
 ## Resultados
-<img width="965" height="192" alt="image" src="https://github.com/user-attachments/assets/52cad104-9c89-4119-b7cc-a99ede60670c" />
-<img width="974" height="280" alt="image" src="https://github.com/user-attachments/assets/07b4b4ec-8c45-445a-b734-abaa47c7de52" />
-<img width="1144" height="185" alt="image" src="https://github.com/user-attachments/assets/08dde3cf-72d3-4365-a45c-8b65a121e849" />
-<img width="1321" height="515" alt="image" src="https://github.com/user-attachments/assets/4b0a4508-59a4-4809-ac47-b550c1be80e3" />
+
+```
+@ErikYair531 →/workspaces/Exposicion-alcance-de-variables (main) $ make run-thread
+    make run-first    # FirstPrivate
+    make run-last     # LastPrivate
+    make              # compilar todo
+    make clean        # limpiar binarios
+./ThreadPrivate
+=== ANTES DE CUALQUIER REGIÓN PARALELA ===
+Hilo maestro: contador = 99
+
+=== REGIÓN PARALELA 1 (copyin inicializa todos en 99) ===
+Hilo 2: contador al entrar = 99
+Hilo 2: contador después de modificar = 20
+Hilo 1: contador al entrar = 99
+Hilo 1: contador después de modificar = 10
+Hilo 0: contador al entrar = 99
+Hilo 0: contador después de modificar = 0
+
+=== ENTRE REGIONES (hilo maestro) ===
+Hilo maestro: contador = 0
+(Cada hilo guarda su propio valor en memoria)
+
+=== REGIÓN PARALELA 2 (sin copyin, cada hilo recuerda el suyo) ===
+Hilo 0: contador persistido = 0
+Hilo 0: contador después de += 5 → 5
+Hilo 2: contador persistido = 20
+Hilo 2: contador después de += 5 → 25
+Hilo 1: contador persistido = 10
+Hilo 1: contador después de += 5 → 15
+
+=== RESULTADO FINAL (hilo maestro) ===
+Hilo maestro: contador = 5
+
+./FirstPrivate
+Valor inicial fuera de la región paralela: first = 100
+Hilo 3: copia local de first = 103
+Hilo 2: copia local de first = 102
+Hilo 1: copia local de first = 101
+Hilo 0: copia local de first = 100
+Después de la región paralela: first = 100
+
+./LastPrivate
+Valor inicial fuera de la región paralela: last = -1
+Hilo 1 procesando iteración 4, last(private) = 4
+Hilo 1 procesando iteración 5, last(private) = 5
+Hilo 1 procesando iteración 6, last(private) = 6
+Hilo 1 procesando iteración 7, last(private) = 7
+Hilo 0 procesando iteración 0, last(private) = 0
+Hilo 0 procesando iteración 1, last(private) = 1
+Hilo 0 procesando iteración 2, last(private) = 2
+Hilo 0 procesando iteración 3, last(private) = 3
+Después de la región paralela: last = 7
+```
 
 
 
