@@ -1,9 +1,9 @@
 # EDA II – Exposición
 
 Alumnos:
-- # 322246698 - Nogueira Lopez Erik Yair
-- # 322166910 - Sánchez de Tagle Caballero Diego Omar
-- # 425094484 - Hernández Hernandez David
+- 322246698 - Nogueira Lopez Erik Yair
+- 322166910 - Sánchez de Tagle Caballero Diego Omar
+- 425094484 - Hernández Hernandez David
 
 ---
 
