@@ -195,7 +195,7 @@ Después de la región paralela: last = 7
 
 **Nogueira Lopez Erik Yair**
 
-*Por escribir*
+Dentro de la práctica, presentación y código sobre el tema de las cláusulas de OpenMP se logró entender los tipos de comportamientos que tienen First, Last y Thread (private) para ejecuciones en paralelo y procesado de datos dentro de ciclos, a su vez el tipo de proceso que lleva a cabo cada cláusula con las variables que maneja.
 
 ---
 
