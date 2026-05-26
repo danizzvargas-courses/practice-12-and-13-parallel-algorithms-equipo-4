@@ -3,7 +3,7 @@
 Alumnos:
 - 322246698 - Nogueira Lopez Erik Yair
 - 322166910 - Sánchez de Tagle Caballero Diego Omar
-- 425094484 - Hernández Hernandez David
+- 425094484 - Hernández Hernández David
 
 ---
 
@@ -193,13 +193,25 @@ Después de la región paralela: last = 7
 
 ## Conclusiones
 
-Al trabajar con hilos en paralelo, la pregunta más importante no es cuántos hilos usar, sino qué pasa con las variables cuando varios hilos corren al mismo tiempo.
+**Nogueira Lopez Erik Yair**
 
-`private`, `firstprivate` y `lastprivate` resuelven eso dentro de una región paralela: la primera da una copia sin valor, la segunda la entrega ya inicializada, y la tercera se asegura de que el resultado de la última iteración no se pierda. Son pequeñas decisiones que cambian completamente el comportamiento del programa.
+*Por escribir*
 
-`threadprivate` va un paso más allá. En lugar de pensar región por región, le da a cada hilo su propio espacio permanente en una variable global. Eso significa que un hilo puede acumular, contar o guardar información a lo largo de todo el programa sin interferir con los demás, y sin perder lo que tenía al entrar a una nueva región paralela.
+---
 
-Lo más valioso de estudiar esto es entender que los errores en programación paralela rara vez gritan: no hay un mensaje de error, el programa simplemente da resultados incorrectos. Saber exactamente cómo se comporta cada variable con cada cláusula o directiva es lo que separa un programa paralelo correcto de uno que funciona "casi siempre".
+**Sánchez de Tagle Caballero Diego Omar**
+
+*Por escribir*
+
+---
+
+**Hernández Hernández David**
+
+Antes de esta práctica, la programación paralela me parecía simplemente dividir un problema entre varios hilos. Lo que no tenía claro era que el verdadero reto está en controlar qué pasa con las variables: con qué valor entra cada hilo, qué hace con ella, y qué queda cuando termina.
+
+Lo que más me llamó la atención fue `threadprivate`. A diferencia de las cláusulas, no vive dentro de una región paralela, sino que acompaña al hilo durante toda la ejecución del programa. Ver en el código cómo cada hilo recordaba su propio valor entre dos regiones paralelas distintas, sin que nadie se lo dijera explícitamente, hace que el concepto de "memoria por hilo" deje de ser abstracto y se vuelva algo concreto y visible.
+
+También entendí que los errores en programación paralela no avisan: el programa compila, corre, y da un resultado que parece razonable pero está mal. Eso me enseñó que elegir entre `private`, `firstprivate`, `lastprivate` o `threadprivate` no es un detalle menor, es una decisión de diseño que define si el programa es correcto o no.
 
 ---
 
