@@ -1,0 +1,1 @@
+# No se requieren paquetes externos para este proyecto en C/OpenMP

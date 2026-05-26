@@ -10,15 +10,3 @@ int main() {
     }
     return 0;
 }
-
- un valor antes de usarla
-        mi_variable = id + 100; 
-        
-        printf("Hilo %d: mi_variable = %d\n", id, mi_variable);
-    }
-
-    // La variable original mantiene su valor inicial
-    printf("Después de la región: %d\n", mi_variable);
-
-    return 0;
-}

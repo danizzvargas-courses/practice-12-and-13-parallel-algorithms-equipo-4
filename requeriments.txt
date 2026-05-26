@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-# Dependencias del proyecto
-# Compilar con: gcc -fopenmp src/pruebas.c -o pruebas
-=======
-# No se requieren paquetes externos para este proyecto en C/OpenMP
->>>>>>> 3dc12d7 (Primeras implementaciones de LP)
