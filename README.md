@@ -133,11 +133,6 @@ copyin(contador)
 ## Resultados
 
 ```
-@ErikYair531 →/workspaces/Exposicion-alcance-de-variables (main) $ make run-thread
-    make run-first    # FirstPrivate
-    make run-last     # LastPrivate
-    make              # compilar todo
-    make clean        # limpiar binarios
 ./ThreadPrivate
 === ANTES DE CUALQUIER REGIÓN PARALELA ===
 Hilo maestro: contador = 99
