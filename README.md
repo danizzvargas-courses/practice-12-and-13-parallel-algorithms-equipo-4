@@ -104,6 +104,30 @@ lastprivate(last)
 
 ### Threadprivate
 
+1. Directiva
+
+#pragma omp threadprivate(contador)
+ - A diferencia de private, firstprivate y lastprivate que son cláusulas dentro de un #pragma omp parallel, threadprivate es una directiva independiente. Se declara una sola vez fuera de cualquier región paralela y se aplica únicamente a variables globales o estáticas, ya que estas necesitan un espacio permanente en memoria por cada hilo.
+
+2. Cláusula copyin
+
+copyin(contador)
+ - Inicialización controlada: Sin copyin, cada hilo retoma el valor que tenía su copia en la región paralela anterior (o un valor indefinido la primera vez). Con copyin, el compilador copia el valor actual de la variable en el hilo maestro (hilo 0) hacia las copias de todos los demás hilos al inicio de la región paralela.
+ - Diferencia clave: Mientras firstprivate inicializa desde la variable original del main, copyin inicializa desde la copia del hilo maestro, que puede haber sido modificada previamente.
+
+3. Funciones de la Librería
+
+#include <omp.h>: Necesario para usar las funciones de OpenMP.
+ - omp_get_thread_num(): Devuelve el identificador único del hilo que está ejecutando ese código en ese momento (ej. Hilo 0, Hilo 1, etc.).
+
+4. Flujo de ejecución
+
+ - Antes de la región paralela: El hilo maestro asigna contador = 99.
+ - Entrada a Región 1 con copyin: Todos los hilos reciben contador = 99. Cada hilo modifica su propia copia (hilo 0 → 0, hilo 1 → 10, hilo 2 → 20).
+ - Entre regiones: Cada hilo conserva su valor en memoria. El hilo maestro (hilo 0) muestra contador = 0.
+ - Entrada a Región 2 sin copyin: Cada hilo retoma exactamente el valor que dejó en la región anterior. Esto confirma la persistencia: el valor no se reinicia, no se pierde y no lo sobreescribe otro hilo.
+ - Final: Cada hilo acumula += 5 sobre su propio valor persistido, demostrando que el aislamiento y la persistencia funcionan juntos.
+
 ---
 
 ## Resultados
