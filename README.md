@@ -196,7 +196,9 @@ Dentro de la práctica, presentación y código sobre el tema de las cláusulas 
 
 **Sánchez de Tagle Caballero Diego Omar**
 
-*Por escribir*
+En esta práctica me pareció intresante que al trabajar con las distintas cláusulas y observar su comportamiento en ejecución, entendí que cada hilo puede tener una perspectiva completamente diferente de la memoria y que controlar eso es fundamental para evitar resultados incorrectos.
+
+También me interesó comprender cómo cambia el comportamiento de una variable dependiendo de si se declara como private, firstprivate, lastprivate o threadprivate. En especial, threadprivate me hizo entender que un hilo puede conservar información propia incluso después de terminar una región paralela, como si cada hilo tuviera una pequeña memoria independiente. Ver esto reflejado directamente en el código ayudó a que el concepto dejara de ser solamente teórico.
 
 ---
 
